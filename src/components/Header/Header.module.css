@@ -1,0 +1,33 @@
+.header {
+  width: 100%;
+  padding: 32px 160px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header div {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  background: var(--brand-purple);
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.button span {
+  margin-left: 4px;
+  color: var(--purple-dark);
+}
+
+.buyButton {
+  background: var(--yellow-brand-light);
+  border: none;
+  border-radius: 6px;
+  padding: 7px;
+  margin-left: 12px;
+}
