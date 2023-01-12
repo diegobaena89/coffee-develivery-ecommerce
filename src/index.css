@@ -3,9 +3,9 @@
   --base-card: #f3f2f2;
   --gray-100: #e6e5e5;
   --gray-300: #8d8686;
-  --gray-500: #574f4d;
-  --gray-700: #403937;
-  --gray-900: #272221;
+  --base-text: #574f4d;
+  --base-subtitle: #403937;
+  --base-title: #272221;
 
   --brand-purple: #ebe5f9;
   --brand-purple-md: #8047f8;
