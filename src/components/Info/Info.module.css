@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 70px 160px;
+  width: 1440px;
+}
+
+.infoLeft {
+  width: 588px;
+}
+
+.infoLeft h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  letter-spacing: 1.8px;
+  margin-bottom: 16px;
+  color: var(--base-title);
+}
+
+.infoLeft > span {
+  font-size: 1.35rem;
+  color: var(--base-subtitle);
+}
+
+.imgRight {
+  display: flex;
+  align-items: start;
+}
+
+.infoGrid {
+  width: 567px;
+  margin-top: 70px;
+  display: grid;
+
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.infoGrid span {
+  font-size: 1rem;
+  color: var(--base-text);
+}
+
+.infoGrid button {
+  margin-right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  margin-bottom: 20px;
+}
