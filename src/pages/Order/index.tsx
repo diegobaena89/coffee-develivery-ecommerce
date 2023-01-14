@@ -15,6 +15,7 @@ import {
   OrderContainer,
   PaymentFrame,
   PaymentMethod,
+  ViewOrder,
 } from './styles';
 
 export function Order() {
@@ -67,6 +68,10 @@ export function Order() {
       </FormContainer>
       <FinishOrder>
         <h2>Cafés selecionados</h2>
+        <ViewOrder>
+          Order
+          <button>Confirmar pedido</button>
+        </ViewOrder>
       </FinishOrder>
     </OrderContainer>
   );

@@ -159,6 +159,40 @@ export const ChoosePayment = styled.div`
 
 export const FinishOrder = styled.div`
   width: 448px;
+
+  > h2 {
+    font-family: 'Baloo 2';
+    font-size: 18px;
+    color: var(--base-subtitle);
+  }
+`;
+
+export const ViewOrder = styled.div`
+  width: 100%;
   height: 498px;
-  border: 1px solid red;
+  background: var(--base-card);
+  margin: 20px 0 12px;
+  border-radius: 6px;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  & button {
+    width: 100%;
+    color: red;
+
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+
+    background-color: var(--yellow-brand);
+    border: none;
+    padding: 15px 0;
+    border-radius: 6px;
+    cursor: pointer;
+  }
 `;

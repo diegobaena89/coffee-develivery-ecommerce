@@ -5,8 +5,8 @@ import {
   CoffeeTags,
 } from './styles';
 
-import { useContext, useState } from 'react';
-
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IoMdCart } from 'react-icons/io';
 import { CoffeeAmount } from '../CoffeeAmount';
 
@@ -25,6 +25,7 @@ export type CoffeeType = {
 };
 
 export const CoffeeCard = ({ coffee }: FullCoffeeCardProps) => {
+  const navigate = useNavigate();
   const { title, tags, description, srcImg, price, id } = coffee;
   // const { addCoffeeToCart, cart } = useContext(OrdersContext);
 
@@ -69,7 +70,7 @@ export const CoffeeCard = ({ coffee }: FullCoffeeCardProps) => {
           removeOne={removeOne}
         />
         <button
-          // onClick={handleAddToCart}
+          onClick={() => navigate('/oder')}
           disabled={buttonAddToCartIsDisabled}
           title={
             buttonAddToCartIsDisabled

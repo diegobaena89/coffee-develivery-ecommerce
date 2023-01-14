@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.header img {
+  cursor: pointer;
+}
+
 .button {
   background: var(--brand-purple);
   border: none;
