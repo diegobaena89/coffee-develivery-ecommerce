@@ -1,8 +1,8 @@
 :root {
   --base-background: #fafafa;
   --base-card: #f3f2f2;
-  --gray-100: #e6e5e5;
-  --gray-300: #8d8686;
+  --base-button: #e6e5e5;
+  --base-label: #8d8686;
   --base-text: #574f4d;
   --base-subtitle: #403937;
   --base-title: #272221;

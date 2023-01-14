@@ -8,11 +8,10 @@ export const HomeContainer = styled.main`
 
 export const HomeSection = styled.section`
   width: 100%;
-  min-height: 54.4rem;
   display: flex;
-  flex-flow: row wrap;
+  padding: 105px 350px 0px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 30px;
 `;
 
@@ -37,12 +36,8 @@ export const HomeInfo = styled.div`
       margin-top: 2rem;
       color: var(--base-subtitle);
       font-size: 1.25rem;
+      width: 568px;
     }
-  }
-
-  @media (max-width: 1215px) {
-    width: 80%;
-    text-align: center;
   }
 `;
 
@@ -74,25 +69,31 @@ export const Advantages = styled.div`
     }
   }
 
+  & div:nth-child(1) svg {
+    background-color: var(--yellow-dark);
+  }
+
   & div:nth-child(2) svg {
     background-color: var(--base-text);
   }
 
   & div:nth-child(3) svg {
-    background-color: var(--base-text);
+    background-color: var(--yellow-brand);
   }
 
   & div:nth-child(4) svg {
-    background-color: var(--base-text);
+    background-color: var(--brand-purple-md);
   }
 `;
 
 export const CoffeesSection = styled.section`
-  width: 100%;
+  width: 1140px;
+  margin: 0 auto;
 
   & h3 {
-    font-size: 1.25rem;
+    font-size: 32px;
     color: var(--base-subtitle);
+    font-family: 'Baloo 2', cursive;
   }
 
   & > div {
@@ -104,10 +105,6 @@ export const CoffeesSection = styled.section`
 
     & > div {
       margin: 2rem 0;
-    }
-
-    @media (max-width: 600px) {
-      justify-content: center;
     }
   }
 `;
