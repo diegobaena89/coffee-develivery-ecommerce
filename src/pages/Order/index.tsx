@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react';
+import { useNavigate } from 'react-router';
 import {
   AddressContainer,
   AddressFrame,
@@ -19,6 +20,10 @@ import {
 } from './styles';
 
 export function Order() {
+  const navigate = useNavigate();
+  function handleConfirmOrder() {
+    navigate('/confirm');
+  }
   return (
     <OrderContainer>
       <FormContainer>
@@ -70,7 +75,7 @@ export function Order() {
         <h2>Cafés selecionados</h2>
         <ViewOrder>
           Order
-          <button>Confirmar pedido</button>
+          <button onClick={handleConfirmOrder}>Confirmar pedido</button>
         </ViewOrder>
       </FinishOrder>
     </OrderContainer>
