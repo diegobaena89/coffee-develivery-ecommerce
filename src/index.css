@@ -16,12 +16,7 @@
   --yellow-brand: #dbac2c;
   --yellow-dark: #c47f17;
 
-  --linear-gradient: linear-gradient(
-    90deg,
-    rgba(219, 172, 44, 1) 0%,
-    rgba(196, 127, 23, 1) 35%,
-    rgba(128, 71, 248, 1) 100%
-  );
+  --linear-gradient: ;
 }
 
 * {

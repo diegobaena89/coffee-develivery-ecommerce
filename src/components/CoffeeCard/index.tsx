@@ -5,38 +5,30 @@ import {
   CoffeeTags,
 } from './styles';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoMdCart } from 'react-icons/io';
 import { CoffeeAmount } from '../CoffeeAmount';
+
+import { CoffeeType, OrdersContext } from '../../providers/OrdersProvider';
 
 interface FullCoffeeCardProps {
   coffee: CoffeeType;
 }
 
-export type CoffeeType = {
-  title: string;
-  tags: string[];
-  amount: number;
-  description: string;
-  srcImg: string;
-  price: string;
-  id: string;
-};
-
 export const CoffeeCard = ({ coffee }: FullCoffeeCardProps) => {
   const navigate = useNavigate();
   const { title, tags, description, srcImg, price, id } = coffee;
-  // const { addCoffeeToCart, cart } = useContext(OrdersContext);
+  const { addCoffeeToCart, cart } = useContext(OrdersContext);
 
   const [coffeeAmount, setCoffeeAmount] = useState(0);
 
   const isCoffeeSelected = coffeeAmount > 0;
   const buttonAddToCartIsDisabled = !isCoffeeSelected;
 
-  // const handleAddToCart = () => {
-  //   addCoffeeToCart(coffee, coffeeAmount);
-  // };
+  const handleAddToCart = () => {
+    addCoffeeToCart(coffee, coffeeAmount);
+  };
 
   const addOne = () => {
     if (coffeeAmount < 9) {
