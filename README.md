@@ -15,6 +15,8 @@
 
 This is a project created for the challenge of Rocketseat's Ignite program where the proposal was to create a coffee e-commerce using the technologies learned in the course.
 
+You can also visit my project deployed [here](https://coffee-develivery-ecommerce-4my3oumns-diegobaena89.vercel.app/)
+
 ---
 
 🚀 <a id="features"> **Features** </a>
