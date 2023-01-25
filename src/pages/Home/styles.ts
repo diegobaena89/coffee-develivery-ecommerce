@@ -8,11 +8,25 @@ export const HomeContainer = styled.main`
 
 export const HomeSection = styled.section`
   width: 100%;
+  min-height: 54.4rem;
   display: flex;
-  padding: 105px 350px 0px;
+  flex-flow: row wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 30px;
+
+  & img {
+    width: 47.6rem;
+    /* height: 36rem; */
+  }
+
+  @media (max-width: 1215px) {
+    justify-content: center;
+
+    & img {
+      width: 90%;
+    }
+  }
 `;
 
 export const HomeInfo = styled.div`
@@ -26,18 +40,26 @@ export const HomeInfo = styled.div`
     flex-direction: column;
 
     & h1 {
-      color: var(--base-title);
-      font-size: 3rem;
+      color: ${({ theme }) => theme.colors['base-title']};
+      font-size: ${({ theme }) => theme.fonts.sizes.xxhuge};
       width: 100%;
       line-height: 130%;
+
+      @media (max-width: 600px) {
+        font-size: ${({ theme }) => theme.fonts.sizes.xhuge};
+      }
     }
 
     & p {
       margin-top: 2rem;
-      color: var(--base-subtitle);
-      font-size: 1.25rem;
-      width: 568px;
+      color: ${({ theme }) => theme.colors['base-subtitle']};
+      font-size: ${({ theme }) => theme.fonts.sizes.medium2};
     }
+  }
+
+  @media (max-width: 1215px) {
+    width: 80%;
+    text-align: center;
   }
 `;
 
@@ -57,43 +79,39 @@ export const Advantages = styled.div`
     min-width: 290px;
 
     & span {
-      font-size: 0.9rem;
-      color: var(--base-text);
+      font-size: ${({ theme }) => theme.fonts.sizes.small4};
+      color: ${({ theme }) => theme.colors['base-text']};
       margin-left: 1rem;
     }
 
     & svg {
+      color: ${({ theme }) => theme.colors['base-light-color']};
+      background-color: ${({ theme }) => theme.colors['1-color']};
       border-radius: 50%;
       font-size: 2.8rem;
       padding: 0.5rem;
     }
   }
 
-  & div:nth-child(1) svg {
-    background-color: var(--yellow-dark);
-  }
-
   & div:nth-child(2) svg {
-    background-color: var(--base-text);
+    background-color: ${({ theme }) => theme.colors['base-text']};
   }
 
   & div:nth-child(3) svg {
-    background-color: var(--yellow-brand);
+    background-color: ${({ theme }) => theme.colors['2-color']};
   }
 
   & div:nth-child(4) svg {
-    background-color: var(--brand-purple-md);
+    background-color: ${({ theme }) => theme.colors['5-color']};
   }
 `;
 
 export const CoffeesSection = styled.section`
-  width: 1140px;
-  margin: 0 auto;
+  width: 100%;
 
   & h3 {
-    font-size: 32px;
-    color: var(--base-subtitle);
-    font-family: 'Baloo 2', cursive;
+    font-size: ${({ theme }) => theme.fonts.sizes.huge};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
   }
 
   & > div {
@@ -105,6 +123,10 @@ export const CoffeesSection = styled.section`
 
     & > div {
       margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      justify-content: center;
     }
   }
 `;

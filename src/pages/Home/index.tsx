@@ -1,22 +1,23 @@
 import {
+  HomeContainer,
+  HomeSection,
+  HomeInfo,
   Advantages,
   CoffeesSection,
-  HomeContainer,
-  HomeInfo,
-  HomeSection,
 } from './styles';
-
-import coffees from '../../coffees';
-
-import homeImage from '../../assets/Info.png';
 
 import { IoCart } from 'react-icons/io5';
 import { MdCoffee } from 'react-icons/md';
 import { BsFillClockFill } from 'react-icons/bs';
 import { RiInboxArchiveFill } from 'react-icons/ri';
-import { CoffeeCard } from '../../components/CoffeeCard';
 
-export function Home() {
+import { FullCoffeeCard } from '../../components/FullCoffeeCard';
+
+import coffees from '../../coffees';
+
+import homeImage from '../../assets/homeImage.png';
+
+export const Home = () => {
   return (
     <HomeContainer>
       <HomeSection>
@@ -30,19 +31,19 @@ export function Home() {
           </div>
           <Advantages>
             <div>
-              <IoCart color='#fff' />
+              <IoCart />
               <span>Compra simples e segura</span>
             </div>
             <div>
-              <RiInboxArchiveFill color='#fff' />
+              <RiInboxArchiveFill />
               <span>Embalagem mantém o café intacto</span>
             </div>
             <div>
-              <BsFillClockFill color='#fff' />
+              <BsFillClockFill />
               <span>Entrega rápida e rastreada</span>
             </div>
             <div>
-              <MdCoffee color='#fff' />
+              <MdCoffee />
               <span>O café chega fresquinho até você</span>
             </div>
           </Advantages>
@@ -53,10 +54,10 @@ export function Home() {
         <h3>Nossos cafés</h3>
         <div>
           {coffees.map((coffee) => (
-            <CoffeeCard coffee={coffee} key={coffee.id} />
+            <FullCoffeeCard coffee={coffee} key={coffee.id} />
           ))}
         </div>
       </CoffeesSection>
     </HomeContainer>
   );
-}
+};

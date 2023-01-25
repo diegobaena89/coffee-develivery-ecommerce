@@ -8,7 +8,7 @@ export const getNewOrderInfo = (cart: CoffeeType[]) => {
         parseFloat(coffee.price.replace(',', '.')) * coffee.amount
       );
     },
-    0
+    0,
   );
 
   const deliveryPrice = cart.length * 2;

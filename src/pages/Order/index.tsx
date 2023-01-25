@@ -1,83 +1,83 @@
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-} from 'phosphor-react';
-import { useNavigate } from 'react-router';
-import {
-  AddressContainer,
-  AddressFrame,
-  ChoosePayment,
-  FinishOrder,
-  FormContainer,
-  Forms,
-  OrderContainer,
-  PaymentFrame,
-  PaymentMethod,
-  ViewOrder,
-} from './styles';
+import { OrderContainer } from './styles';
 
-export function Order() {
-  const navigate = useNavigate();
-  function handleConfirmOrder() {
-    navigate('/confirm');
-  }
+import { useState, useContext } from 'react';
+import { format } from 'date-fns';
+
+import { ptBR } from 'date-fns/locale';
+
+import { v4 as uuid } from 'uuid';
+
+import { FormProvider, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as zod from 'zod';
+
+import { CartInfo } from './components/CartInfo';
+import { PaymentForm } from './components/PaymentForm';
+
+import { OrdersContext } from '../../providers/OrdersProvider';
+import { toast } from 'react-toastify';
+
+const newCompleteOrderFormSchema = zod.object({
+  CEP: zod.string().regex(/^[0-9]{5}-[0-9]{3}$/),
+  road: zod.string().min(10),
+  number: zod.string().min(1).max(3),
+  complement: zod.string().min(20),
+  district: zod.string().min(10),
+  city: zod.string(),
+  estate: zod.string(),
+});
+
+export type NewCompleteOrderData = zod.infer<typeof newCompleteOrderFormSchema>;
+
+export const Order = () => {
+  const { completeCurrentOrder } = useContext(OrdersContext);
+  const [paymentPreference, setPaymentPreference] = useState('');
+
+  const handleSelectPaymentPreference = (newPaymentPreference: string) => {
+    setPaymentPreference(newPaymentPreference);
+  };
+
+  const newOrderForm = useForm<NewCompleteOrderData>({
+    resolver: zodResolver(newCompleteOrderFormSchema),
+    defaultValues: {
+      CEP: '',
+      road: '',
+      number: '',
+      complement: '',
+      district: '',
+      city: '',
+      estate: '',
+    },
+  });
+
+  const { reset } = newOrderForm;
+
+  const completeOrder = (data: NewCompleteOrderData) => {
+    const newOrderData = {
+      ...data,
+      paymentPreference,
+      date: format(new Date(), 'dd/MM/yyyy', { locale: ptBR }),
+      id: uuid(),
+    };
+
+    if (paymentPreference.length === 0) {
+      toast.warning('Selecione um meio de pagamento!');
+      return;
+    }
+    completeCurrentOrder(newOrderData);
+    reset();
+  };
+
   return (
     <OrderContainer>
-      <FormContainer>
-        <h2>Complete seu pedido</h2>
-        <AddressContainer>
-          <AddressFrame>
-            <MapPinLine size={22} />
-            <div>
-              <p>Endereço de Entrega</p>
-              <span>Informe o endereço onde deseja receber seu pedido</span>
-            </div>
-          </AddressFrame>
-          <Forms>
-            <input type='text' placeholder='CEP' />
-            <input type='text' placeholder='Rua' />
-            <input type='number' name='Numero' placeholder='Número' />
-            <input type='text' placeholder='Complemento' />
-            <input type='text' placeholder='Bairro' />
-            <input type='text' placeholder='Cidade' />
-            <input type='text' placeholder='UF' />
-          </Forms>
-        </AddressContainer>
-
-        <PaymentMethod>
-          <PaymentFrame>
-            <CurrencyDollar size={22} weight='fill' />
-            <div>
-              <p>Pagamento</p>
-              <span>
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
-              </span>
-            </div>
-          </PaymentFrame>
-          <ChoosePayment>
-            <button>
-              <CreditCard size={16} />
-              Cartão de Crédito
-            </button>
-            <button>
-              <Bank size={16} /> Cartão de Débito
-            </button>
-            <button>
-              <Money size={16} /> Dinheiro
-            </button>
-          </ChoosePayment>
-        </PaymentMethod>
-      </FormContainer>
-      <FinishOrder>
-        <h2>Cafés selecionados</h2>
-        <ViewOrder>
-          Order
-          <button onClick={handleConfirmOrder}>Confirmar pedido</button>
-        </ViewOrder>
-      </FinishOrder>
+      <FormProvider {...newOrderForm}>
+        <PaymentForm
+          completeOrder={completeOrder}
+          handleSelectPaymentPreference={handleSelectPaymentPreference}
+          paymentPreference={paymentPreference}
+        />
+        <CartInfo />
+      </FormProvider>
     </OrderContainer>
   );
-}
+};

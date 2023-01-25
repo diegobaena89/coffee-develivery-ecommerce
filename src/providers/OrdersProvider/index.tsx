@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { toast } from 'react-toastify';
 
-import { getNewOrderInfo } from '../utils/getNewOrderInfo';
+import { getNewOrderInfo } from '../../utils/get-new-order-info';
 
 export type CoffeeType = {
   title: string;
@@ -144,7 +144,7 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
           productsPrice: 0,
         },
       };
-    }
+    },
   );
 
   useEffect(() => {

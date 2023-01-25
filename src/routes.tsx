@@ -1,20 +1,32 @@
-import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes as Switch,
+  Route,
+} from 'react-router-dom';
 
-import { BrowserRouter, Route, Routes, RoutesProps } from 'react-router-dom';
-import { Header } from './components/Header';
-import { ConfirmationOrder } from './pages/ConfirmationOrder';
 import { Home } from './pages/Home';
 import { Order } from './pages/Order';
+import { History } from './pages/History';
+import { SuccessfulOrder } from './pages/SuccessfulOrder';
 
-export function Router({ children, location }: RoutesProps) {
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+
+import { Container } from './components/Container';
+
+export const Routes = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/order' element={<Order />} />
-        <Route path='/confirm' element={<ConfirmationOrder />} />
-      </Routes>
-    </BrowserRouter>
+    <Router>
+      <Container>
+        <Header />
+        <Switch>
+          <Route path="/order/success" element={<SuccessfulOrder />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/" element={<Home />} />
+        </Switch>
+        <Footer />
+      </Container>
+    </Router>
   );
-}
+};

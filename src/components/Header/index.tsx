@@ -1,22 +1,38 @@
-import styles from './Header.module.css';
-import Logo from '../../assets/Logo.png';
-import { MapPin, ShoppingCart } from 'phosphor-react';
-import { useNavigate } from 'react-router-dom';
+import { HeaderContainer } from './styles';
 
-export function Header() {
-  const navigate = useNavigate();
+import { useContext } from 'react';
+
+import { OrdersContext } from '../../providers/OrdersProvider';
+
+import { GrLocation } from 'react-icons/gr';
+import { IoIosCart } from 'react-icons/io';
+
+import { ImHistory } from 'react-icons/im';
+
+import logo from '../../assets/logo.png';
+
+export const Header = () => {
+  const { cart } = useContext(OrdersContext);
+
+  const isCartEmpty = cart.length === 0;
   return (
-    <div className={styles.header}>
-      <img onClick={() => navigate('/')} src={Logo} alt='Logo' />
+    <HeaderContainer>
+      <a href="/">
+        <img src={logo} alt="Logo - Coffee Delivery" />
+      </a>
       <div>
-        <button className={styles.button}>
-          <MapPin weight='fill' color='#8047F8' size={24} />{' '}
-          <span>Porto Alegre, Rs</span>
-        </button>
-        <button onClick={() => navigate('/order')} className={styles.buyButton}>
-          <ShoppingCart color='#C47F17' size={24} weight='fill' />
-        </button>
+        <div>
+          <GrLocation />
+          <span>Minas Gerais, BR</span>
+        </div>
+        <a href="/order" title="Acessar o Carrinho">
+          <IoIosCart />
+          {!isCartEmpty && <span>{cart.length}</span>}
+        </a>
+        <a href="history" title="Acessar o histórico">
+          <ImHistory />
+        </a>
       </div>
-    </div>
+    </HeaderContainer>
   );
-}
+};

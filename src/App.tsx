@@ -1,11 +1,22 @@
-import { Router } from './routes';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
-function App() {
+import { Routes } from './routes';
+
+import { ThemeProvider } from './providers/ThemeProvider';
+import { OrdersProvider } from './providers/OrdersProvider';
+
+export default function App() {
   return (
-    <>
-      <Router />
-    </>
+    <OrdersProvider>
+      <ThemeProvider>
+        <Routes />
+        <ToastContainer
+          autoClose={3000}
+          pauseOnHover={false}
+          style={{ width: 'max-content' }}
+        />
+      </ThemeProvider>
+    </OrdersProvider>
   );
 }
-
-export default App;

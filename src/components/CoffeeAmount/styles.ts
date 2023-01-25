@@ -4,19 +4,19 @@ export const CoffeeAmountContainer = styled.div`
   display: flex;
   flex-direction: row;
   border-radius: 5px;
-  width: 72px;
-  height: 38px;
+  width: 7rem;
+  height: 3.2rem;
   justify-content: center;
   align-items: center;
-  background-color: var(--base-button);
+  background-color: ${({ theme }) => theme.colors['base-button']};
 
   & span {
-    color: var(--base-title);
-    font-size: 16px;
+    color: ${({ theme }) => theme.colors['base-title']};
+    font-size: ${({ theme }) => theme.fonts.sizes.small4};
   }
 
   & button {
-    color: var(--brand-purple-md);
+    color: ${({ theme }) => theme.colors['5-color']};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,7 +31,7 @@ export const CoffeeAmountContainer = styled.div`
     }
 
     &:hover {
-      color: var(--purple-dark);
+      color: ${({ theme }) => theme.colors['4-color']};
     }
   }
 `;
